@@ -5,10 +5,10 @@ import javax.swing.*;
 
 public class Menu extends JFrame {
 
-	int[] rulesInputToArray(String userInputString) //Will take rules window user input strings and return them as int arrays
+	int[] rulesInputToArray(String userInputString) 
 	{
 		String[] userInputElements = userInputString.split("\\s+"); //Store separate numbers in user input as elements in String array
-		int[] userInputValues = new int[userInputElements.length]; //Create int array with as many elements as in the String array
+		int[] userInputValues = new int[userInputElements.length]; 
 		
 		if(userInputElements[0].equals(">")) //If user specifies > to look for greater values 
 		{
@@ -24,7 +24,7 @@ public class Menu extends JFrame {
 		}
 		
 
-		for(int i = 0; i < userInputElements.length; i++){  //Store elements in String array in an int array as ints
+		for(int i = 0; i < userInputElements.length; i++){  //Store elements in String array in an int
 
 			if(!userInputElements[i].equals(">") && !userInputElements[i].equals("<") && !userInputElements.equals("")) //If user has entered a number here
 			{
@@ -34,7 +34,7 @@ public class Menu extends JFrame {
 		return userInputValues; //Return integer array representing rule criteria
 	}
 	
-	int[][] diceInputToArray(String userInputString) //Will take user input for dice number and sides and place store as 2d integer array
+	int[][] diceInputToArray(String userInputString) //Will take user input for dice number and sides and store as 2d integer array
 	{
 		String[] userInputElements = userInputString.split("d|\\s+"); //Retrieve numbers before and after d as separate elements in String array
 		int[][] numSidesAndDice = new int[2][userInputElements.length]; //Two-dimensional array to store number of dice, and number of sides in each 'row'
@@ -43,7 +43,7 @@ public class Menu extends JFrame {
 		int k = 0; //Used for storing numSides
 		
 		//Place elements in two-dimensional int array.  Each odd number is numDice, each even is numSides
-		for(int i = 0; i < userInputElements.length; i++){ //For length of String array
+		for(int i = 0; i < userInputElements.length; i++){ 
 			if(i%2 == 0) //If dealing with a number of dice
 			{
 				numSidesAndDice[0][j] = Integer.parseInt(userInputElements[i]); //Put number in jth element of first column
@@ -61,12 +61,12 @@ public class Menu extends JFrame {
 	
 	String diceRoller(int[] successInput, int[] failInput, int[] critSuccessInput, int[] critFailInput, int[][] userDiceInput) //Takes in rule and dice input, then 'rolls'
 	{
-		int numSuccess = 0; //Number of successes from dice rolls
-		int numCritSuccess = 0; //Number of crit success from dice rolls
-		int numFail = 0; //Number of failures from dice rolls
-		int numCritFail = 0; //Number of crit failures from dice rolls
-		Random diceNumberGen = new Random(); //Used for dice roll		
-		String rollString = ""; //Will be used to show numbers rolled		
+		int numSuccess = 0; 
+		int numCritSuccess = 0; 
+		int numFail = 0; 
+		int numCritFail = 0; 
+		Random diceNumberGen = new Random(); 		
+		String rollString = "";		
 		
 		for(int i = 0; i < userDiceInput.length; i++){ //For the amount of dice/side combinations given by the user
 			for(int j = 0; j < userDiceInput[0][i]; j++){ //For the amount of dice specified in this element
@@ -161,7 +161,7 @@ public class Menu extends JFrame {
 		}
 		
 		String resultString = "You Rolled The Following Numbers: " + rollString + "\nSuccesses: " + numSuccess + " Critical Successes: " + numCritSuccess + " Failures: " + numFail + " Critical Failures: " + numCritFail; 
-		return resultString; //Return string that shows successes, failures, etc.
+		return resultString;
 	}
 	
 	//The main menu
@@ -195,7 +195,7 @@ public class Menu extends JFrame {
 	rulesFrame.setBackground(Color.white);
 	rulesFrame.setLayout(new GroupLayout(rulesFrame.getContentPane()));
 
-	//Rules frame's GroupLayout panel, used for user input with dice rules
+	//Rules frame's GroupLayout panel
 	JPanel rulesPanel = new JPanel();
 	rulesPanel.setBackground(Color.white);
 	rulesPanel.setSize(500, 310);
@@ -234,21 +234,21 @@ public class Menu extends JFrame {
 	//Text field for dice choosing frame
 	JTextField diceChooseEntry = new JTextField();
 	
-	//Text fields to be used for user input
+	//Text fields to be used for rules
 	JTextField successEntry = new JTextField();
 	JTextField critSuccessEntry = new JTextField();
 	JTextField failEntry = new JTextField();
 	JTextField critFailEntry = new JTextField();
 	
-	//OK and Cancel buttons for rules frame.  OK will keep changes to rules set by user and close window, cancel will disregard them and close window
-	JButton rulesOkButton = new JButton("OK"); //OK button in rules frame, to confirm rule choices
-	JButton rulesCancelButton = new JButton("Cancel"); //Cancel button, to prevent rule changes
+	//OK and Cancel buttons for rules frame.
+	JButton rulesOkButton = new JButton("OK"); 
+	JButton rulesCancelButton = new JButton("Cancel");
 	
-	//OK and Cancel buttons for dice choosing frame.  OK will confirm dice choices set by user and close window, cancel will disregard them and close the window
+	//OK and Cancel buttons for dice choosing frame.
 	JButton chooseDiceOKButton = new JButton("OK");
 	JButton chooseDiceCancelButton = new JButton("Cancel");
 	
-	//Choose Dice frame's panel layout
+		//Choose Dice frame's panel layout
 		chooseDiceLayout.setHorizontalGroup(chooseDiceLayout.createParallelGroup() 
 				.addComponent(diceChooseInstructions)
 				.addComponent(diceChooseLabel)
@@ -261,7 +261,7 @@ public class Menu extends JFrame {
 				)
 			);
 		
-		chooseDiceLayout.setVerticalGroup(chooseDiceLayout.createSequentialGroup() //Vertical group for frame components
+		chooseDiceLayout.setVerticalGroup(chooseDiceLayout.createSequentialGroup() 
 				.addComponent(diceChooseInstructions)
 				.addComponent(diceChooseLabel)
 				.addComponent(diceChooseEntry)
@@ -278,7 +278,7 @@ public class Menu extends JFrame {
 		
 		
 	//Rules frame's panel layout
-	rulesLayout.setHorizontalGroup(rulesLayout.createParallelGroup() //Horizontal group for frame copmonents 
+	rulesLayout.setHorizontalGroup(rulesLayout.createParallelGroup() 
 			//Labels before text fields
 			.addComponent(instructionsLabel)
 			.addComponent(successLabel)
@@ -299,7 +299,7 @@ public class Menu extends JFrame {
 			)
 		);
 	
-	rulesLayout.setVerticalGroup(rulesLayout.createSequentialGroup() //Vertical group for frame components
+	rulesLayout.setVerticalGroup(rulesLayout.createSequentialGroup() 
 			.addComponent(instructionsLabel)
 
 			.addComponent(successLabel)
@@ -324,73 +324,65 @@ public class Menu extends JFrame {
 	rulesFrame.add(rulesPanel);
 	
 	//Main Menu Buttons
-	JButton diceChooseButton = new JButton("Choose Dice"); //Will let user determine what kind of dice to roll, and how many
+	JButton diceChooseButton = new JButton("Choose Dice");
 	diceChooseButton.setFont(new Font("Serif", Font.ITALIC | Font.BOLD, 14));
 	diceChooseButton.setBackground(Color.white);
 	menuFrame.getContentPane().add(diceChooseButton);
 	
-	JButton diceRollButton = new JButton("Roll Dice"); //Will "roll the dice" and alert user of results
+	JButton diceRollButton = new JButton("Roll Dice");
 	diceRollButton.setFont(new Font("Serif", Font.ITALIC | Font.BOLD, 14));
 	diceRollButton.setBackground(Color.white);
 	menuFrame.getContentPane().add(diceRollButton);
 	
-	JButton rulesButton = new JButton("Rules"); //Will allow users to set rules for dice roll successes, fails, etc.
+	JButton rulesButton = new JButton("Rules");
 	rulesButton.setFont(new Font("Serif", Font.ITALIC | Font.BOLD, 14));
 	rulesButton.setBackground(Color.white);
 	menuFrame.getContentPane().add(rulesButton);
 	
-	JButton helpButton = new JButton("Help"); //Will show user instructions on how to use this program
+	JButton helpButton = new JButton("Help");
 	helpButton.setFont(new Font("Serif", Font.ITALIC | Font.BOLD, 14));
 	helpButton.setBackground(Color.white);
 	menuFrame.getContentPane().add(helpButton);
 	
 	
-	
 	//Startup
 	menuFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //If the main window frame is closed, exit the program
 	menuFrame.setVisible(true); //Make the main window frame visible
+		
 	
-
-	
-	
-	//Choose dice button
-	diceChooseButton.addActionListener(new ActionListener(){ //Show window to choose amount and sides of dice to be rolled
+	//Action listeners for buttons
+	diceChooseButton.addActionListener(new ActionListener(){ 
 		public void actionPerformed(ActionEvent e)
 		{
 			diceChooseFrame.setVisible(true);
 		}});
 	
-	//Choose Dice OK button
-	chooseDiceOKButton.addActionListener(new ActionListener(){ //Close dice choosing window without discarding input
+	chooseDiceOKButton.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
 			diceChooseFrame.dispose();
 		}});
 	
-	//Choose Dice Cancel button
-	chooseDiceCancelButton.addActionListener(new ActionListener(){ //Close dice choosing window and discard user input
+	chooseDiceCancelButton.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
 			diceChooseEntry.setText("");
 			diceChooseFrame.dispose();  
 		}});
 	
-	//Rules button
-	rulesButton.addActionListener(new ActionListener(){ //Show window to choose rules for dice rolls
+	rulesButton.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
 			rulesFrame.setVisible(true);
 		}});
 	
-	//Rules OK button
-	rulesOkButton.addActionListener(new ActionListener(){ //Close rules window without discarding user input
+	rulesOkButton.addActionListener(new ActionListener(){ 
 		public void actionPerformed(ActionEvent e)
 		{
 			rulesFrame.dispose();
 		}});
 	
-	//Rules Cancel button
-	rulesCancelButton.addActionListener(new ActionListener(){ //Close rules window and discard user input
+	rulesCancelButton.addActionListener(new ActionListener(){ 
 		public void actionPerformed(ActionEvent e)
 		{
 			successEntry.setText("");
@@ -401,16 +393,15 @@ public class Menu extends JFrame {
 			rulesFrame.dispose(); 
 		}});
 	
-	//Roll dice button
 	diceRollButton.addActionListener(new ActionListener(){ //Take user input into int arrays, roll dice, display results
 		public void actionPerformed(ActionEvent e)
 		{
 			//Assign rules frame user input to int array
-			String successRule = successEntry.getText(); //Store user input for successful roll numbers
-			String critSuccessRule = critSuccessEntry.getText(); //Store user input for critically successful roll numbers
-			String failRule = failEntry.getText(); //Store user input for fail roll numbers
-			String critFailRule = critFailEntry.getText(); //Store user input for critical failure roll numbers
-			String diceChosen = diceChooseEntry.getText(); //Store user input for dice to roll
+			String successRule = successEntry.getText();
+			String critSuccessRule = critSuccessEntry.getText(); 
+			String failRule = failEntry.getText(); 
+			String critFailRule = critFailEntry.getText(); 
+			String diceChosen = diceChooseEntry.getText(); 
 			
 			if(successRule.isEmpty()){ //If no rules for successes
 				successRule = "-1"; //Change string to -1 represent "no rules"
@@ -428,14 +419,13 @@ public class Menu extends JFrame {
 				critFailRule = "-1"; //Change string to -1 to represent "no rules"
 			}
 			
-			//Store user specified rules in int arrays 
+			//Store user specified rules into int arrays 
 			int[] userSuccessInput = rulesInputToArray(successRule); 
 			int[] userCritSuccessInput = rulesInputToArray(critSuccessRule);
 			int[] userFailInput = rulesInputToArray(failRule);
 			int[] userCritFailInput = rulesInputToArray(critFailRule);
 			
-			//Store dice chosen by user input in int array
-			if(diceChosen.isEmpty()){ //If no dice chosen
+			if(diceChosen.isEmpty()){
 				JOptionPane.showMessageDialog(menuFrame, "Please enter an amount of dice to roll using the 'Choose Dice' button.", "ERROR: No Dice Chosen", JOptionPane.ERROR_MESSAGE); //Tell user to choose dice
 			}
 			
@@ -445,8 +435,7 @@ public class Menu extends JFrame {
 				JOptionPane.showMessageDialog(menuFrame, diceRoller(userSuccessInput, userFailInput, userCritSuccessInput, userCritFailInput, userDiceInput)); //Roll dice according to user-input rules, show results to user
 			}}});
 		
-	//Help button
-	helpButton.addActionListener(new ActionListener(){ //Show instructions
+	helpButton.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
 			JOptionPane.showMessageDialog(helpFrame, 
